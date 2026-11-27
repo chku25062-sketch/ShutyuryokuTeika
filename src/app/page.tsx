@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { Play, History, Info, CheckCircle2, AlertCircle, Clock } from "lucide-react";
 import { getLatestSession } from "@/lib/storage";
 import { getFeedbackForScore } from "@/lib/score";
 import { TestSessionRecord } from "@/types";
@@ -62,15 +63,26 @@ export default function HomePage() {
             </div>
 
             {/* フィードバックカード */}
-            <div className={`p-4 rounded-xl border ${
+            <div className={`p-4 rounded-xl border flex items-start gap-3 ${
               feedback.type === "high"
                 ? "bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800 text-green-900 dark:text-green-300"
                 : feedback.type === "medium"
                 ? "bg-yellow-50 dark:bg-yellow-950/30 border-yellow-200 dark:border-yellow-800 text-yellow-900 dark:text-yellow-300"
                 : "bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-800 text-red-900 dark:text-red-300"
             }`}>
-              <div className="font-bold text-base mb-1">{feedback.title}</div>
-              <div className="text-sm leading-relaxed">{feedback.actionAdvice}</div>
+              <div className="mt-0.5 flex-shrink-0">
+                {feedback.type === "high" ? (
+                  <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
+                ) : feedback.type === "medium" ? (
+                  <Clock className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
+                ) : (
+                  <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
+                )}
+              </div>
+              <div className="space-y-0.5">
+                <div className="font-bold text-base">{feedback.title}</div>
+                <div className="text-sm leading-relaxed">{feedback.actionAdvice}</div>
+              </div>
             </div>
           </div>
         ) : (
@@ -91,25 +103,29 @@ export default function HomePage() {
           href="/test"
           className="w-full py-4 px-6 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-center shadow transition flex items-center justify-center gap-2 text-lg"
         >
-          <span>⚡</span>
+          <Play className="w-5 h-5" />
           <span>集中力を計測する（簡易テスト）</span>
         </Link>
         <Link
           href="/history"
-          className="w-full py-3 px-6 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-xl text-center transition text-sm"
+          className="w-full py-3 px-6 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium rounded-xl text-center transition text-sm flex items-center justify-center gap-2"
         >
-          過去の履歴を見る
+          <History className="w-4 h-4" />
+          <span>過去の履歴を見る</span>
         </Link>
       </div>
 
       {/* 第9回スライスの説明カード */}
-      <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-xs text-gray-500 space-y-1">
-        <p className="font-semibold text-gray-700 dark:text-gray-300">
-          💡 第9回スライス（最小開通版）
-        </p>
-        <p>
-          完全オフラインで動作します。テスト受検〜スコア算出〜ローカル保存（LocalStorage）〜結果表示の一連の流れが開通しています。
-        </p>
+      <div className="p-4 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-xs text-gray-500 flex items-start gap-2.5">
+        <Info className="w-4 h-4 text-gray-400 mt-0.5 flex-shrink-0" />
+        <div className="space-y-0.5">
+          <p className="font-semibold text-gray-700 dark:text-gray-300">
+            第9回スライス（最小開通版）
+          </p>
+          <p>
+            完全オフラインで動作します。テスト受検、スコア算出、ローカル保存（LocalStorage）、結果表示の一連の流れが開通しています。
+          </p>
+        </div>
       </div>
     </div>
   );

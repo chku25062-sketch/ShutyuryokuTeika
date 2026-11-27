@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { ArrowLeft, Trash2 } from "lucide-react";
 import { getAllSessions, clearAllSessions } from "@/lib/storage";
 import { getFeedbackForScore } from "@/lib/score";
 import { TestSessionRecord } from "@/types";
@@ -38,9 +39,10 @@ export default function HistoryPage() {
         {sessions.length > 0 && (
           <button
             onClick={handleClear}
-            className="text-xs text-red-500 hover:text-red-700 underline"
+            className="text-xs text-red-500 hover:text-red-700 underline flex items-center gap-1"
           >
-            履歴を消去
+            <Trash2 className="w-3.5 h-3.5" />
+            <span>履歴を消去</span>
           </button>
         )}
       </div>
@@ -110,9 +112,9 @@ export default function HistoryPage() {
       <div className="pt-2">
         <Link
           href="/"
-          className="inline-flex items-center gap-1 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+          className="inline-flex items-center gap-1.5 text-sm text-blue-600 dark:text-blue-400 hover:underline"
         >
-          <span>&larr;</span>
+          <ArrowLeft className="w-4 h-4" />
           <span>ホームへ戻る</span>
         </Link>
       </div>

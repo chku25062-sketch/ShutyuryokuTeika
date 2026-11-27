@@ -2,8 +2,10 @@
 const nextConfig = {
   reactStrictMode: true,
   eslint: {
-    // CIパイプラインで検査するためビルド時の暗黙チェックでの失敗を防止
     ignoreDuringBuilds: true,
+  },
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
   },
 };
 

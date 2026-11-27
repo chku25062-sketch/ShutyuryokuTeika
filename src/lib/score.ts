@@ -49,19 +49,19 @@ export function getFeedbackForScore(score: number): FeedbackMessage {
   if (score >= 75) {
     return {
       type: "high",
-      title: "⚡ 集中力十分",
+      title: "集中力十分",
       actionAdvice: "素早く正確に解答できています。重い課題や難関タスクを一気に進めましょう！",
     };
   } else if (score >= 50) {
     return {
       type: "medium",
-      title: "☕ 標準コンディション",
+      title: "標準コンディション",
       actionAdvice: "集中力は標準的です。無理のないペースで、通常の作業を進めましょう。",
     };
   } else {
     return {
       type: "low",
-      title: "🛌 集中力低下中",
+      title: "集中力低下中",
       actionAdvice: "回答に遅れやミスが目立っています。時間を浪費する前に、軽い作業に切り替えるか休憩を挟みましょう。",
     };
   }

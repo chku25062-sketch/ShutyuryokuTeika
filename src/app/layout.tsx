@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Activity } from "lucide-react";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function RootLayout({
           <header className="border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur sticky top-0 z-50">
             <div className="max-w-2xl mx-auto px-4 h-14 flex items-center justify-between">
               <Link href="/" className="font-bold text-lg flex items-center gap-2">
-                <span>⚡</span>
+                <Activity className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                 <span>集中力低下観察</span>
               </Link>
               <nav className="flex items-center gap-4 text-sm font-medium text-gray-600 dark:text-gray-400">

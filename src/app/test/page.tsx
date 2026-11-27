@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { CheckCircle2, Clock, AlertCircle, ArrowLeft } from "lucide-react";
 import { saveSession } from "@/lib/storage";
 import { calculatePerformanceScore, getFeedbackForScore } from "@/lib/score";
 import { FeedbackMessage } from "@/types";
@@ -136,15 +137,26 @@ export default function TestPage() {
             </div>
           </div>
 
-          <div className={`p-4 rounded-xl border text-left ${
+          <div className={`p-4 rounded-xl border text-left flex items-start gap-3 ${
             feedback.type === "high"
               ? "bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800 text-green-900 dark:text-green-300"
               : feedback.type === "medium"
               ? "bg-yellow-50 dark:bg-yellow-950/30 border-yellow-200 dark:border-yellow-800 text-yellow-900 dark:text-yellow-300"
               : "bg-red-50 dark:bg-red-950/30 border-red-200 dark:border-red-800 text-red-900 dark:text-red-300"
           }`}>
-            <div className="font-bold text-base mb-1">{feedback.title}</div>
-            <div className="text-sm leading-relaxed">{feedback.actionAdvice}</div>
+            <div className="mt-0.5 flex-shrink-0">
+              {feedback.type === "high" ? (
+                <CheckCircle2 className="w-5 h-5 text-green-600 dark:text-green-400" />
+              ) : feedback.type === "medium" ? (
+                <Clock className="w-5 h-5 text-yellow-600 dark:text-yellow-400" />
+              ) : (
+                <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400" />
+              )}
+            </div>
+            <div className="space-y-0.5">
+              <div className="font-bold text-base">{feedback.title}</div>
+              <div className="text-sm leading-relaxed">{feedback.actionAdvice}</div>
+            </div>
           </div>
 
           <p className="text-xs text-gray-400">
