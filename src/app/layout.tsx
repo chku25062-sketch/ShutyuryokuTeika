@@ -3,7 +3,7 @@ import Link from "next/link";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "集中力低下観察アプリ",
+  title: "集中力低下観察",
   description: "客観的な集中力スコアを測定し、最適な作業・休憩判断を支援するアプリ",
 };
 
@@ -20,7 +20,7 @@ export default function RootLayout({
             <div className="max-w-2xl mx-auto px-4 h-14 flex items-center justify-between">
               <Link href="/" className="font-bold text-lg flex items-center gap-2">
                 <span>⚡</span>
-                <span>集中力観察</span>
+                <span>集中力低下観察</span>
               </Link>
               <nav className="flex items-center gap-4 text-sm font-medium text-gray-600 dark:text-gray-400">
                 <Link href="/" className="hover:text-black dark:hover:text-white transition">
@@ -36,7 +36,7 @@ export default function RootLayout({
             {children}
           </main>
           <footer className="border-t border-gray-200 dark:border-gray-800 py-4 text-center text-xs text-gray-500">
-            集中力低下観察アプリ &copy; 2026
+            集中力低下観察 &copy; 2026
           </footer>
         </div>
       </body>
