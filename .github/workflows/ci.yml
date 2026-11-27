@@ -19,16 +19,13 @@ jobs:
         with:
           node-version: 22
           cache: "npm"
-          cache-dependency-path: ShutyuryokuTeika/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
-        working-directory: ShutyuryokuTeika
         run: npm ci
 
       - name: Typecheck
-        working-directory: ShutyuryokuTeika
         run: npm run typecheck
 
       - name: Run Tests
-        working-directory: ShutyuryokuTeika
         run: npm run test
